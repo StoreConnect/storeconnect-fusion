@@ -7,16 +7,16 @@ import time
 
 ### Live database ###
 
-login = ''
-password = ''
+login = 'storeconnect'
+password = 'MBWJcx4gKMebaJ2F'
 
 endpointQuery = 'http://apiontologie.westeurope.cloudapp.azure.com:8890/strabon/Query'
 endpointUpdate = 'http://apiontologie.westeurope.cloudapp.azure.com:8890/strabon/Update'
 
 ### Local database ###
 
-#login = ''
-#password = ''
+#login = 'update'
+#password = 'changeit'
 
 #endpointQuery = 'http://localhost:8890/strabon/Query'
 #endpointUpdate = 'http://localhost:8890/strabon/Update'
@@ -44,6 +44,22 @@ queryHeaders = """
         #?s ?p ?o   
     #}
     #"""
+
+def deleteObject(idObj) :
+    
+    query = queryHeaders+ """
+    DELETE {{ ?a ?b ?c }} WHERE {{
+     ?a ?b ?c .
+     filter contains(str(?a),"{idobj}")
+    }};
+
+    DELETE {{ ?a ?b ?c }} WHERE {{
+     ?a ?b ?c .
+     filter contains(str(?c),"{idobj}")
+    }}
+    """.format(idobj=idObj)
+    
+    result = servicePost.query(query)
 
 def sendStore() :
     
@@ -164,3 +180,5 @@ def sendData(dataDict) :
 if __name__ == "__main__":
     # Someone is launching this directly
     sendData({})
+    #deleteObject("50c4aa31f3d55bebDUMMY")
+    #deleteObject("T5E10.1.0.70-1DUMMY")

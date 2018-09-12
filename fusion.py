@@ -197,8 +197,8 @@ def main():
     for f in fusionList :
         print f[1], f[2], f[0]
         
-        tbf1 = [tbf for tbf in tobeFused if f[1] in tbf]
-        tbf2 = [tbf for tbf in tobeFused if f[2] in tbf]
+        tbf1 = [tbf for tbf in fusionList if f[1] in tbf]
+        tbf2 = [tbf for tbf in fusionList if f[2] in tbf]
         #TODO no cyclic confirmation (A->B, B->C so A->C)
         
         
@@ -253,12 +253,12 @@ def main():
                 fusedTraj[traj]["trajectory"].append(meanPoint)
                 lastPoint = point
         
-    print(fusedTraj)
+    #print(fusedTraj)
     
     response = raw_input("SEND TO API? (y/n)")
     
     if response == "y" :
-        sendDataToApiOntology.sendData(dataDict)
+        sendDataToApiOntology.sendData(fusedTraj)
     
 
 if __name__ == "__main__":

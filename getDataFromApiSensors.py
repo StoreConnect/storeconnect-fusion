@@ -9,7 +9,7 @@ dataDict = {}
 def getData() :
     
     url = "http://apicapteur.westeurope.cloudapp.azure.com:8080/SensorThingsService/v1.0/Observations"
-    fil = "?$filter=phenomenonTime ge 2018-06-20T09:59:00.000Z and phenomenonTime le 2018-06-20T10:00:00.000Z "
+    fil = "?$filter=phenomenonTime ge 2018-06-20T08:41:00.000Z and phenomenonTime le 2018-06-20T08:44:00.000Z "
     url += fil
     
     #myResponse = requests.get(url,auth=HTTPDigestAuth(raw_input("username: "), raw_input("Password: ")), verify=True)
